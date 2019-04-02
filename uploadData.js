@@ -20,9 +20,20 @@ function startDataUpload() {
 	var surname = document.getElementById("surname").value;
 	var module = document.getElementById("module").value;
 	var postString = "name="+name +"&surname="+surname+"&module="+module;
-	var postString = "name="+name +"&surname="+surname+"&module="+module;
 	alert (postString);
 
+	// now get the geometry values
+	var latitude = document.getElementById("latitude").value;
+	var longitude = document.getElementById("longitude").value;
+	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
+
+	// now get the radio button values
+	if (document.getElementById("morning").checked) {
+		postString=postString+"&lecturetime=morning";
+	}
+	if (document.getElementById("afternoon").checked) {
+		postString=postString+"&lecturetime=afternoon";
+	}
 // now get the checkbox values - separate them with a | so that they can be
 // split later on if necessary
 
@@ -34,14 +45,6 @@ function startDataUpload() {
 
 	}
 	postString = postString + "&modulelist="+checkString;
-
-	// now get the radio button values
-	if (document.getElementById("morning").checked) {
-		postString=postString+"&lecturetime=morning";
-	}
-	if (document.getElementById("afternoon").checked) {
-		postString=postString+"&lecturetime=afternoon";
-	}
 
 	// now get the select box values
 	var language = document.getElementById("languageselectbox").value;
